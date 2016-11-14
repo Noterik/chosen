@@ -286,11 +286,23 @@ class Chosen extends AbstractChosen
       @search_field.removeClass "default"
 
   search_results_mouseup: (evt) ->
-    target = if $(evt.target).hasClass "active-result" then $(evt.target) else $(evt.target).parents(".active-result").first()
+    $evtTarget = $(evt.target);
+
+    target = if $evtTarget.hasClass "active-result" then $evtTarget else $evtTarget.parents(".active-result").first()
+
     if target.length
       @result_highlight = target
       this.result_select(evt)
       @search_field.focus()
+    else if @allow_dropdown_item_deselect
+      parent = if @show_checkboxes then $evtTarget.parent().parent() else $evtTarget.parent()
+      index = parent.data('option-array-index');
+      choice = @container.find('.chosen-choices a[data-option-array-index="' + index + '"]');
+
+      this.choice_destroy(choice);
+      #this.result_deselect(index);
+      #@search_field.focus()
+
 
   search_results_mouseover: (evt) ->
     target = if $(evt.target).hasClass "active-result" then $(evt.target) else $(evt.target).parents(".active-result").first()
@@ -323,7 +335,7 @@ class Chosen extends AbstractChosen
       else
         this.show_search_field_default()
 
-      this.results_hide() if @is_multiple and this.choices_count() > 0 and this.get_search_field_value().length < 1
+      this.results_hide() if @is_multiple and this.choices_count() > 0 and this.get_search_field_value().length < 1 and @hide_results_on_select
 
       link.parents('li').first().remove()
 
@@ -356,6 +368,10 @@ class Chosen extends AbstractChosen
         high.removeClass("active-result")
       else
         this.reset_single_select_options()
+
+      if @show_checkboxes and !$(evt.target).is(':checkbox')
+        checkbox = high.find('input[type="checkbox"]')
+        checkbox.attr('checked', 'checked')
 
       high.addClass("result-selected")
 

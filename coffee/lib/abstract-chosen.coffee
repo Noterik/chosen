@@ -14,8 +14,10 @@ class AbstractChosen
     this.on_ready()
 
   set_default_values: ->
+    console.log('set_default_values')
     @click_test_action = (evt) => this.test_active_click(evt)
     @activate_action = (evt) => this.activate_field(evt)
+
     @active_field = false
     @mouse_on_container = false
     @results_showing = false
@@ -36,7 +38,8 @@ class AbstractChosen
     @max_shown_results = @options.max_shown_results || Number.POSITIVE_INFINITY
     @case_sensitive_search = @options.case_sensitive_search || false
     @hide_results_on_select = if @options.hide_results_on_select? then @options.hide_results_on_select else true
-
+    @show_checkboxes = @options.show_checkboxes || false
+    @allow_dropdown_item_deselect = @options.allow_dropdown_item_deselect || false
   set_default_text: ->
     if @form_field.getAttribute("data-placeholder")
       @default_text = @form_field.getAttribute("data-placeholder")
@@ -116,7 +119,25 @@ class AbstractChosen
     option_el.className = classes.join(" ")
     option_el.style.cssText = option.style
     option_el.setAttribute("data-option-array-index", option.array_index)
-    option_el.innerHTML = option.search_text
+
+    option_contents = option.search_text
+
+    if @show_checkboxes
+      checkbox_el = document.createElement('input')
+      checkbox_el.setAttribute("type", "checkbox")
+      checkbox_el.setAttribute("checked", "checked ") if option.selected;
+
+      option_contents = document.createElement('div')
+      option_contents.appendChild(checkbox_el)
+
+      option_contents_label = document.createElement('span')
+      option_contents_label.innerHTML = option.search_text
+      option_contents.appendChild(option_contents_label)
+    else
+        option_contents = document.createTextNode(option.search_text);
+
+
+    option_el.appendChild(option_contents);
     option_el.title = option.title if option.title
 
     this.outerHTML(option_el)
@@ -350,4 +371,3 @@ class AbstractChosen
   @default_multiple_text: "Select Some Options"
   @default_single_text: "Select an Option"
   @default_no_result_text: "No results match"
-

@@ -1,6 +1,7 @@
 class @Chosen extends AbstractChosen
 
   setup: ->
+    console.log('setup');
     @current_selectedIndex = @form_field.selectedIndex
 
   set_default_values: ->
@@ -12,6 +13,7 @@ class @Chosen extends AbstractChosen
     @no_results_temp = new Template('<li class="no-results">' + @results_none_found + ' "<span>#{terms}</span>"</li>')
 
   set_up_html: ->
+    console.log('set_up_html');
     container_classes = ["chosen-container"]
     container_classes.push "chosen-container-" + (if @is_multiple then "multi" else "single")
     container_classes.push @form_field.className if @inherit_select_classes && @form_field.className
@@ -50,6 +52,7 @@ class @Chosen extends AbstractChosen
     @form_field.fire("chosen:ready", {chosen: this})
 
   register_observers: ->
+    console.log('register_observers');
     @container.observe "touchstart", (evt) => this.container_mousedown(evt)
     @container.observe "touchend", (evt) => this.container_mouseup(evt)
 
