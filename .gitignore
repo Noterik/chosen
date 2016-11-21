@@ -9,3 +9,4 @@ chosen*.zip
 .grunt
 _SpecRunner.html
 spec/public
+npm-debug.log
