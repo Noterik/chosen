@@ -286,7 +286,7 @@
             <select data-placeholder="Choose a Country..." class="chosen-select-checkboxes" multiple style="width:350px;" tabindex="4">
               <option value=""></option>
               <option value="United States">United States</option>
-              <option value="United Kingdom">United Kingdom</option>
+              <option value="United Kingdom" selected="selected">United Kingdom</option>
               <option value="Afghanistan">Afghanistan</option>
               <option value="Aland Islands">Aland Islands</option>
               <option value="Albania">Albania</option>
@@ -1992,8 +1992,22 @@
         allow_dropdown_item_deselect: true
       }
     }
+
+    var events = {
+      '.chosen-select-checkboxes': {
+        'change': function(evt){
+          console.log(evt);
+        }
+      }
+    }
     for (var selector in config) {
       $(selector).chosen(config[selector]);
+    }
+
+    for(var selector in events){
+      for(var ev in events[selector]){
+        $(selector).on(ev, events[selector][ev]);
+      }
     }
   </script>
   </form>

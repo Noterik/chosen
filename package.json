@@ -1,19 +1,20 @@
 {
-  "author": "harvest",
-  "name": "chosen",
+  "author": "David Ammeraal",
+  "name": "chosen-noterik",
   "version": "1.6.2",
-  "description": "Chosen is a JavaScript plugin that makes select boxes user-friendly. It is currently available in both jQuery and Prototype flavors.",
+  "description": "This is a fork of https://harvesthq.github.io/chosen/ that includes support for dropdowns with checkboxes.",
   "keywords": [
     "select",
     "multiselect",
     "dropdown",
     "form",
     "input",
-    "ui"
+    "ui",
+    "checkboxes"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/harvesthq/chosen.git"
+    "url": "https://github.com/Noterik/chosen.git"
   },
   "engines": {
     "node": ">=0.4.0"
@@ -55,20 +56,23 @@
     {
       "name": "Koen Punt",
       "url": "https://github.com/koenpunt"
+    },
+    {
+      "name": "David Ammeraal",
+      "url": "https://github.com/DavidAmmeraal"
     }
   ],
   "license": "MIT",
-  "homepage": "https://harvesthq.github.io/chosen/",
-  "bugs": "https://github.com/harvesthq/chosen/issues",
+  "homepage": "https://github.com/Noterik/chosen",
+  "bugs": "https://github.com/Noterik/chosen/issues",
   "_extra": {
     "title": "Chosen",
     "license": {
       "type": "MIT",
-      "url": "https://github.com/harvesthq/chosen/blob/master/LICENSE.md"
+      "url": "https://github.com/Noterik/chosen.git/blob/master/LICENSE.md"
     },
     "links": {
-      "download": "https://github.com/harvesthq/chosen/releases",
-      "docs": "https://harvesthq.github.io/chosen/"
+      "docs": "https://github.com/Noterik/chosen.git"
     },
     "files": [
       "chosen.jquery.js",
