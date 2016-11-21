@@ -1,7 +1,7 @@
 {
   "author": "David Ammeraal",
   "name": "chosen-noterik",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "This is a fork of https://harvesthq.github.io/chosen/ that includes support for dropdowns with checkboxes.",
   "keywords": [
     "select",
