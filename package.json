@@ -62,6 +62,7 @@
       "url": "https://github.com/DavidAmmeraal"
     }
   ],
+  "main": "public/chosen.jquery.js",
   "license": "MIT",
   "homepage": "https://github.com/Noterik/chosen",
   "bugs": "https://github.com/Noterik/chosen/issues",

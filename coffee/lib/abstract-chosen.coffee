@@ -14,7 +14,6 @@ class AbstractChosen
     this.on_ready()
 
   set_default_values: ->
-    console.log('set_default_values')
     @click_test_action = (evt) => this.test_active_click(evt)
     @activate_action = (evt) => this.activate_field(evt)
 
