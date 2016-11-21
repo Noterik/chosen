@@ -26,7 +26,7 @@ npm install chosen-noterik
 ### Usage
 
 Example of using newly added features:
-```
+```javascript
 jQuery('.chosen').chosen({
   show_checkboxes: true, //Will show checkboxes in dropdown
   hide_results_on_select: false, //Will keep the dropdown open when selecting an option
